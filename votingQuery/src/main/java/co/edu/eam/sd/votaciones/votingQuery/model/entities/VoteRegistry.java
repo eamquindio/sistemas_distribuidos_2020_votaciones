@@ -1,94 +1,110 @@
 package co.edu.eam.sd.votaciones.votingQuery.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name = "vote_registry")
 public class VoteRegistry implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-  private Long candidateId;
-  private String candidateName;
-  private Long partyId;
-  private String partyName;
-  private String city;
-  private Date dateTime;
-  private int count;
+    @Column(name = "candidate_id")
+    private Long candidateId;
+    @Column(name = "candidate_name")
+    private String candidateName;
+    @Column(name = "party_id")
+    private Long partyId;
+    @Column(name = "party_name")
+    private String partyName;
+    private String city;
+    @Column(name = "date_time")
+    private Date dateTime;
+    private int count;
 
 
-  public VoteRegistry() {
-  }
+    public VoteRegistry() {
+    }
 
-  public VoteRegistry(Long id, Long candidateId, String candidateName, Long partyId, String partyName, String city, String location, Date dateTime) {
-    this.id = id;
-    this.candidateId = candidateId;
-    this.candidateName = candidateName;
-    this.partyId = partyId;
-    this.partyName = partyName;
-    this.city = city;
-    this.dateTime = dateTime;
-  }
+    public VoteRegistry(int count) {
+        this.count = count;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public VoteRegistry(Long id, Long candidateId, String candidateName, Long partyId, String partyName, String city, int count, Date dateTime) {
+        this.id = id;
+        this.candidateId = candidateId;
+        this.candidateName = candidateName;
+        this.partyId = partyId;
+        this.partyName = partyName;
+        this.city = city;
+        this.dateTime = dateTime;
+        this.count = count;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public Long getCandidateId() {
-    return candidateId;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public void setCandidateId(Long candidateId) {
-    this.candidateId = candidateId;
-  }
+    public Long getCandidateId() {
+        return candidateId;
+    }
 
-  public String getCandidateName() {
-    return candidateName;
-  }
+    public void setCandidateId(Long candidateId) {
+        this.candidateId = candidateId;
+    }
 
-  public void setCandidateName(String candidateName) {
-    this.candidateName = candidateName;
-  }
+    public String getCandidateName() {
+        return candidateName;
+    }
 
-  public Long getPartyId() {
-    return partyId;
-  }
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
+    }
 
-  public void setPartyId(Long partyId) {
-    this.partyId = partyId;
-  }
+    public Long getPartyId() {
+        return partyId;
+    }
 
-  public String getPartyName() {
-    return partyName;
-  }
+    public void setPartyId(Long partyId) {
+        this.partyId = partyId;
+    }
 
-  public void setPartyName(String partyName) {
-    this.partyName = partyName;
-  }
+    public String getPartyName() {
+        return partyName;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public void setPartyName(String partyName) {
+        this.partyName = partyName;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public String getCity() {
+        return city;
+    }
 
-  public Date getDateTime() {
-    return dateTime;
-  }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-  public void setDateTime(Date dateTime) {
-    this.dateTime = dateTime;
-  }
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

@@ -8,51 +8,51 @@ import java.util.Date;
 @Entity
 public class Votante implements Serializable {
 
-  private String nombre;
-  @Id
-  private String cedula;
-  private Date fechaNacimiento;
-  private String biometria;
+    private String nombre;
+    @Id
+    private String cedula;
+    private Date fechaNacimiento;
+    private String biometria;
 
-  public Votante() {
-  }
+    public Votante() {
+    }
 
-  public Votante(String nombre, String cedula, Date fechaNacimiento, String biometria) {
-    this.nombre = nombre;
-    this.cedula = cedula;
-    this.fechaNacimiento = fechaNacimiento;
-    this.biometria = biometria;
-  }
+    public Votante(String nombre, String cedula, Date fechaNacimiento, String biometria) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.fechaNacimiento = fechaNacimiento;
+        this.biometria = biometria;
+    }
 
-  public String getNombre() {
-    return nombre;
-  }
+    public String getNombre() {
+        return nombre;
+    }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-  public String getCedula() {
-    return cedula;
-  }
+    public String getCedula() {
+        return cedula;
+    }
 
-  public void setCedula(String cedula) {
-    this.cedula = cedula;
-  }
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 
-  public Date getFechaNacimiento() {
-    return fechaNacimiento;
-  }
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
 
-  public void setFechaNacimiento(Date fechaNacimiento) {
-    this.fechaNacimiento = fechaNacimiento;
-  }
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
-  public String getBiometria() {
-    return biometria;
-  }
+    public String getBiometria() {
+        return biometria;
+    }
 
-  public void setBiometria(String biometria) {
-    this.biometria = biometria;
-  }
+    public void setBiometria(String biometria) {
+        this.biometria = biometria;
+    }
 }
