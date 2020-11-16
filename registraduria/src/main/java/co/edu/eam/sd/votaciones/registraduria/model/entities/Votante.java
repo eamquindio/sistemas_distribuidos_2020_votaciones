@@ -1,17 +1,24 @@
 package co.edu.eam.sd.votaciones.registraduria.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name = "votante")
 public class Votante implements Serializable {
 
   private String nombre;
   @Id
   private String cedula;
   private Date fechaNacimiento;
+
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String biometria;
 
   public Votante() {
