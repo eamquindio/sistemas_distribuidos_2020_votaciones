@@ -1,6 +1,7 @@
 package co.edu.eam.sd.votaciones.votingData.model.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 @Entity
 public class VoterLocation implements Serializable {
 
+  @Id
   private String cedula;
 
   @ManyToOne
