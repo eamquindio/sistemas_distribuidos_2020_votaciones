@@ -1,6 +1,7 @@
 package co.edu.eam.sd.votaciones.registraduria.controller;
 
 
+import co.edu.eam.sd.votaciones.registraduria.exceptions.NotFoundException;
 import co.edu.eam.sd.votaciones.registraduria.model.entities.Votante;
 import co.edu.eam.sd.votaciones.registraduria.services.votanteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,14 @@ public class VotanteController {
 
 
     @GetMapping("/by-biometria")
-    public Votante buscarBybiometria(@RequestParam String biometria){
+    public Votante buscarBybiometria(@RequestParam String biometria) {
         System.out.println("entro al controllador a buscar y esta es la llave"+biometria);
-         Votante result = votanteService.buscarBybiometria(biometria);
+        Votante result = null;
+        try {
+            result = votanteService.buscarBybiometria(biometria);
+        } catch (Exception e) {
+            throw new NotFoundException("no existe el votante");
+        }
 
         return result;
     }
