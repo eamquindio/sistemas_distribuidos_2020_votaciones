@@ -1,23 +1,37 @@
 package co.edu.eam.sd.votaciones.registraduria.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name="votante")
 public class Votante implements Serializable {
 
+
+  @Column
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String nombre;
+
   @Id
   private String cedula;
-  private Date fechaNacimiento;
+
+  @Column(name="fechanacimiento")
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private String fechaNacimiento;
+
+  @Column
   private String biometria;
 
   public Votante() {
   }
 
-  public Votante(String nombre, String cedula, Date fechaNacimiento, String biometria) {
+  public Votante(String nombre, String cedula, String fechaNacimiento, String biometria) {
     this.nombre = nombre;
     this.cedula = cedula;
     this.fechaNacimiento = fechaNacimiento;
@@ -40,11 +54,11 @@ public class Votante implements Serializable {
     this.cedula = cedula;
   }
 
-  public Date getFechaNacimiento() {
+  public String getFechaNacimiento() {
     return fechaNacimiento;
   }
 
-  public void setFechaNacimiento(Date fechaNacimiento) {
+  public void setFechaNacimiento(String fechaNacimiento) {
     this.fechaNacimiento = fechaNacimiento;
   }
 

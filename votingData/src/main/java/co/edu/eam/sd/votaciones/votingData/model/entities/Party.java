@@ -1,16 +1,16 @@
 package co.edu.eam.sd.votaciones.votingData.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="partido")
 public class Party {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  @Column(name="nombre")
   private String name;
 
   public Party() {

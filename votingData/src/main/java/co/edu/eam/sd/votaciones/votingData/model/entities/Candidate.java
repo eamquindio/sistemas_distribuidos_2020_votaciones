@@ -1,31 +1,31 @@
 package co.edu.eam.sd.votaciones.votingData.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="candidato")
 public class Candidate implements Serializable {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  @Column(name="nombre")
   private String name;
 
-  @ManyToOne
-  @JoinColumn(name = "party_id")
-  private Party party;
+  //@ManyToOne
+  //@JoinColumn(name = "party_id")
+  @Column(name="party_id")
+  private Long party;
 
   public Candidate() {
   }
 
-  public Candidate(Long id, String name) {
+  public Candidate(Long id, String name,Long party) {
     this.id = id;
     this.name = name;
+    this.party = party;
   }
 
   public Long getId() {
@@ -42,5 +42,13 @@ public class Candidate implements Serializable {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public Long getParty() {
+    return party;
+  }
+
+  public void setParty(Long party) {
+    this.party = party;
   }
 }
