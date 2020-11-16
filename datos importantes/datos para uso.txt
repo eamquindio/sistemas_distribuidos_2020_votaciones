@@ -1,0 +1,33 @@
+verificar el archivo aplication.properties y verificar o modificar los datos
+para la coneccion ala base de datos root, password, nombre de base de datos
+
+crear base de datos en postgreslq y despues darle clic y en restore se abre una ventana darle clic 
+en los tres puntos donde dice Filename, se abre una nueva ventana en la parte de abajo donde dice format
+seleccionamos allfiles y buscamos el archivo BD_votaciones para la base de datos de registraduria 
+y el archivo BD_cne_votingData para la base de datos de cne o votingdata 
+lo seleccionamos y por ultimo damos clic en restore
+
+para ejecutar redis ejecutar los siguietes comandos en un cmd
+primero 
+docker pull redis
+despues 
+docker run -p 6379:6379 --rm --name redis redis
+
+y por ultimo para conectarnos abrimos otro cmd y ejecutamos
+docker run -it --link redis:redis --rm redis redis-cli -h redis -p 6379
+
+nota los datos tienen una duracion de 60 segundos en redis despues 
+de este tiempo se borran automaticamente
+
+
+
+para usar el api
+
+para consultar todos los datos de candidatos
+get http://localhost:8080/candidato
+
+
+para verificar la biometria del votante
+get http://localhost:8080/votante/by-biometria?biometria=1094942083ricardo
+
+
