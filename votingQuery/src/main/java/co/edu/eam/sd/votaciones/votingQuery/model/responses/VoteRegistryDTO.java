@@ -1,19 +1,25 @@
 package co.edu.eam.sd.votaciones.votingQuery.model.responses;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class VoteRegistryDTO implements Serializable {
 
     private Long count;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String city;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String candidate;
 
     public VoteRegistryDTO(Long count, String city, String candidate) {
         this.count = count;
         this.city = city;
         this.candidate = candidate;
+    }
+
+    public VoteRegistryDTO(Long count) {
+        this.count = count;
     }
 
     public Long getCount() {

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class VoteRegistryService {
@@ -19,6 +21,14 @@ public class VoteRegistryService {
         VoteRegistryDTO cityCount = voteRegistryRepository.findVoteByCandidateANDCity(candidate, city);
         if (cityCount == null)
             throw new NotFoundException("No existen registros de votos para el candidato: " + candidate + " en : " + city);
+        return cityCount;
+    }
+
+    @Cacheable(value = "vote_registry_city", key = "#city")
+    public VoteRegistryDTO findByCity(String city) {
+        VoteRegistryDTO cityCount = voteRegistryRepository.findVoteByCity(city);
+        if (cityCount==null)
+            throw new NotFoundException("No existen registros de votos");
         return cityCount;
     }
 }

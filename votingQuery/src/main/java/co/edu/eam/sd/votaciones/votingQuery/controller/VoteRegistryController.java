@@ -16,4 +16,9 @@ public class VoteRegistryController {
     public VoteRegistryDTO findByCandidateANDCity(@RequestParam Long candidate, @RequestParam String city) {
         return voteRegistryService.findByCandidateANDCity(candidate, city);
     }
+
+    @GetMapping("/byCity/{city}")
+    public VoteRegistryDTO findByCity(@PathVariable String city) {
+        return voteRegistryService.findByCity(city);
+    }
 }
