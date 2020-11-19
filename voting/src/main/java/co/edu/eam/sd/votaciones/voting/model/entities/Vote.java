@@ -1,4 +1,4 @@
-package co.edu.eam.sd.votaciones.votingRegistry.model.entities;
+package co.edu.eam.sd.votaciones.voting.model.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,6 @@ public class Vote implements Serializable {
   private String city;
   private String location;
   private Date dateTime;
-
 
   public Vote() {
   }
