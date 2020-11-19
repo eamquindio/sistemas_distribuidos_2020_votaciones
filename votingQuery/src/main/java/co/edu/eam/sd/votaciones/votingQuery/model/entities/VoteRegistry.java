@@ -1,5 +1,7 @@
 package co.edu.eam.sd.votaciones.votingQuery.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,6 @@ public class VoteRegistry implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
-
   private Long candidateId;
   private String candidateName;
   private Long partyId;

@@ -43,4 +43,12 @@ public class Locations implements Serializable {
   public void setName(String name) {
     this.name = name;
   }
+
+  public City getCity() {
+    return city;
+  }
+
+  public void setCity(City city) {
+    this.city = city;
+  }
 }
