@@ -1,10 +1,9 @@
 package co.edu.eam.sd.votaciones.votingQuery.exceptions;
 
 
-public class BusinessException extends RuntimeException {
+public class BusinessException extends RuntimeException{
 
     private String ErrorCode;
-
     public BusinessException(String message) {
         super(message);
     }
