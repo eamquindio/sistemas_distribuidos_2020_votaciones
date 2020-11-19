@@ -21,13 +21,6 @@ import java.util.NoSuchElementException;
 
 @ControllerAdvice
 public class ExceptionManager {
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public ErrorMessage handleNotFoundException(HttpServletRequest req, NotFoundException exc){
-        return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
-    }
-
     @ExceptionHandler({
             InvalidFormatException.class,
             MethodArgumentNotValidException.class,

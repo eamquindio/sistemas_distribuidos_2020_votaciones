@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class votanteService {
+public class VotanteService {
 
 
    @Autowired
@@ -33,4 +33,13 @@ public class votanteService {
 
         return votanteRepository.buscarBybiometria(biometria);
     }
+
+  @Cacheable(value = "votantes", key="#cedula")
+  public Votante find(String cedula){
+    Votante votante = votanteRepository.findByCedula(cedula);
+    if(votante==null)
+      throw new NotFoundException("No existe un votante con cedula: "+cedula, "votante_doesnt_exist");
+
+    return votante;
+  }
 }

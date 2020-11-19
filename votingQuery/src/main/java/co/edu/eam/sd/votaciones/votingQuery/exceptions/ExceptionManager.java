@@ -24,18 +24,6 @@ public class ExceptionManager {
         return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
     }
 
-    @ExceptionHandler({
-            InvalidFormatException.class,
-            MethodArgumentNotValidException.class,
-            HttpMessageNotReadableException.class,
-            MethodArgumentTypeMismatchException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ErrorMessage handleParamsError(HttpServletRequest req, Exception exc) {
-        return new ErrorMessage(exc.getMessage(), "bad_request");
-    }
-
-
 
   @ExceptionHandler({
           InvalidFormatException.class,
