@@ -1,35 +1,40 @@
 package co.edu.eam.sd.votaciones.votingData.model.entities;
 
-//import javax.persistence.Entity;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
-//import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-//@Entity
-//public class VoterLocation implements Serializable {
 
-  //private String cedula;
+@Entity
+public class VoterLocation implements Serializable {
 
-  //@ManyToOne
-  //@JoinColumn(name = "location_id")
-  //private Locations location;
+  @Id
+  private String cedula;
 
-  //public VoterLocation() {
-  //}
+  @ManyToOne
+  @JoinColumn(name = "location_id")
+  @NotNull(message="Location is obligatory")
+  private Locations location;
 
-  //public String getCedula() {
-    //return cedula;
-  //}
+  public VoterLocation() {
+  }
 
-  //public void setCedula(String cedula) {
-    //this.cedula = cedula;
-  //}
+  public String getCedula() {
+    return cedula;
+  }
 
-  //public Locations getLocation() {
-    //return location;
-  //}
+  public void setCedula(String cedula) {
+    this.cedula = cedula;
+  }
 
-  //public void setLocation(Locations location) {
-    //this.location = location;
-  //}
-//}
+  public Locations getLocation() {
+    return location;
+  }
+
+  public void setLocation(Locations location) {
+    this.location = location;
+  }
+}

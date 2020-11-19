@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel>
+      <module name="votingData.main" target="11" />
+      <module name="votingData.test" target="11" />
+      <module name="votingQuery.main" target="11" />
+      <module name="votingQuery.test" target="11" />
+      <module name="votingRegistry.main" target="11" />
+      <module name="votingRegistry.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

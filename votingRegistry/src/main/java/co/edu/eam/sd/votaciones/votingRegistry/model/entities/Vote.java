@@ -15,9 +15,7 @@ public class Vote implements Serializable {
   private Long id;
 
   private Long candidateId;
-  private String candidateName;
   private Long partyId;
-  private String partyName;
   private String city;
   private String location;
   private Date dateTime;
@@ -26,16 +24,6 @@ public class Vote implements Serializable {
   public Vote() {
   }
 
-  public Vote(Long id, Long candidateId, String candidateName, Long partyId, String partyName, String city, String location, Date dateTime) {
-    this.id = id;
-    this.candidateId = candidateId;
-    this.candidateName = candidateName;
-    this.partyId = partyId;
-    this.partyName = partyName;
-    this.city = city;
-    this.location = location;
-    this.dateTime = dateTime;
-  }
 
   public Long getId() {
     return id;
@@ -53,28 +41,12 @@ public class Vote implements Serializable {
     this.candidateId = candidateId;
   }
 
-  public String getCandidateName() {
-    return candidateName;
-  }
-
-  public void setCandidateName(String candidateName) {
-    this.candidateName = candidateName;
-  }
-
   public Long getPartyId() {
     return partyId;
   }
 
   public void setPartyId(Long partyId) {
     this.partyId = partyId;
-  }
-
-  public String getPartyName() {
-    return partyName;
-  }
-
-  public void setPartyName(String partyName) {
-    this.partyName = partyName;
   }
 
   public String getCity() {

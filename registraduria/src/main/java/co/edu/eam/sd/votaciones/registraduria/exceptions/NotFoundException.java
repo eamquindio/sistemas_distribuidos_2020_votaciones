@@ -1,5 +1,6 @@
 package co.edu.eam.sd.votaciones.registraduria.exceptions;
 
+
 public class NotFoundException extends BusinessException{
 
 
@@ -14,3 +15,4 @@ public class NotFoundException extends BusinessException{
     }
 
 }
+

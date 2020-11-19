@@ -18,5 +18,4 @@ public class BusinessException extends RuntimeException{
     public void setErrorCode(String errorCode) {
         ErrorCode = errorCode;
     }
-
 }

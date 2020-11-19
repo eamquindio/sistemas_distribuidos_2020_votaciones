@@ -15,18 +15,18 @@ public class RedisConfig {
     @Bean
     JedisConnectionFactory jedisConnectionFactory(){return new JedisConnectionFactory();}
 
+    
     @Bean
-    public RedisTemplate<String, String> redisTemplate(){
-        //crear template de redis y manda o guarda datos en este
-        RedisTemplate<String, String> Template = new RedisTemplate<>();
-        Template.setKeySerializer(new StringRedisSerializer());
-        Template.setValueSerializer(new StringRedisSerializer());
+    JedisConnectionFactory jedisConnectionFactory() {
+        return new JedisConnectionFactory();
+    }
 
-
-
-        //se conecta y manda datos a redis
-        Template.setConnectionFactory(jedisConnectionFactory());
-
-        return Template;
+    @Bean
+    public RedisTemplate<String, String> redisTemplate() {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new StringRedisSerializer());
+        template.setConnectionFactory(jedisConnectionFactory());
+        return template;
     }
 }
