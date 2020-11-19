@@ -1,6 +1,5 @@
 package co.edu.eam.sd.votaciones.registraduria.exceptions;
 
-
 public class BusinessException extends RuntimeException{
 
     private String ErrorCode;

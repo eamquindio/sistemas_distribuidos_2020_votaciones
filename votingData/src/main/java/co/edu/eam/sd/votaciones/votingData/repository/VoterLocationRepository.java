@@ -8,3 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VoterLocationRepository extends JpaRepository<VoterLocation, String> {
 }
+

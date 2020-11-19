@@ -7,4 +7,3 @@ public class ExecutionResultException extends BusinessException{
         super(message, ErrorCode);
     }
 }
-

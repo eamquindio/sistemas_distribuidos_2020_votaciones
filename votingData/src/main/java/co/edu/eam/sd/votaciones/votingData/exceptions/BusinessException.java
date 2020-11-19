@@ -1,6 +1,5 @@
 package co.edu.eam.sd.votaciones.votingData.exceptions;
 
-
 public class BusinessException extends RuntimeException{
 
     private String ErrorCode;
@@ -19,5 +18,4 @@ public class BusinessException extends RuntimeException{
     public void setErrorCode(String errorCode) {
         ErrorCode = errorCode;
     }
-
 }

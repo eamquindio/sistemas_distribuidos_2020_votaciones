@@ -10,19 +10,22 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class RedisConfig {
+    //establece la conexion con redis
+    @Bean
+    JedisConnectionFactory jedisConnectionFactory(){return new JedisConnectionFactory();}
 
     @Bean
-    JedisConnectionFactory jedisConnectionFactory() {
-        return new JedisConnectionFactory();
-    }
+    public RedisTemplate<String, String> redisTemplate(){
+        //crear template de redis y manda o guarda datos en este
+        RedisTemplate<String, String> Template = new RedisTemplate<>();
+        Template.setKeySerializer(new StringRedisSerializer());
+        Template.setValueSerializer(new StringRedisSerializer());
 
-    @Bean
-    public RedisTemplate<String, String> redisTemplate() {
-        RedisTemplate<String, String> template = new RedisTemplate<>();
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new StringRedisSerializer());
-        template.setConnectionFactory(jedisConnectionFactory());
-        return template;
-    }
 
+
+        //se conecta y manda datos a redis
+        Template.setConnectionFactory(jedisConnectionFactory());
+
+        return Template;
+    }
 }

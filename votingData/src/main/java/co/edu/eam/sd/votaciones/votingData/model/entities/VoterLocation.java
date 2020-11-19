@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+
 @Entity
 public class VoterLocation implements Serializable {
 

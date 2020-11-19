@@ -8,10 +8,11 @@ public class NotFoundException extends BusinessException{
 
         super(message, ErrorCode);
     }
-    
+
     public NotFoundException(String message) {
-    super(message);
-    setErrorCode("entity_not_found");
-  }
+        super(message);
+        setErrorCode("entity_not_found");
+    }
 
 }
+
