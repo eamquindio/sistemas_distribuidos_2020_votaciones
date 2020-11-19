@@ -7,6 +7,7 @@ public class BusinessException extends RuntimeException{
     public BusinessException(String message) {
         super(message);
     }
+
     public BusinessException(String message, String ErrorCode) {
         super(message);
         this.ErrorCode = ErrorCode;

@@ -12,7 +12,6 @@ import java.util.Date;
 @Entity
 @Table(name = "votante")
 public class Votante implements Serializable {
-
   private String nombre;
   @Id
   private String cedula;

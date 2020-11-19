@@ -17,13 +17,25 @@ import java.util.NoSuchElementException;
 
 @ControllerAdvice
 public class ExceptionManager {
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorMessage handleNotFoundException(HttpServletRequest req, NotFoundException exc) {
+        return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
+    }
 
-  @ExceptionHandler(NotFoundException.class)
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  @ResponseBody
-  public ErrorMessage handleNotFoundException(HttpServletRequest req, NotFoundException exc){
-    return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
-  }
+    @ExceptionHandler({
+            InvalidFormatException.class,
+            MethodArgumentNotValidException.class,
+            HttpMessageNotReadableException.class,
+            MethodArgumentTypeMismatchException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorMessage handleParamsError(HttpServletRequest req, Exception exc) {
+        return new ErrorMessage(exc.getMessage(), "bad_request");
+    }
+
+
 
   @ExceptionHandler({
           InvalidFormatException.class,
@@ -42,25 +54,4 @@ public class ExceptionManager {
     public ErrorMessage handleBusinessException(HttpServletRequest req, BusinessException exc){
         return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
     }
-
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    @ResponseBody
-    public ErrorMessage handlePostException(HttpServletRequest req, Exception exc){
-        return new ErrorMessage(exc.getMessage(), "Post_Url_Incorrect");
-    }
-
-    @ExceptionHandler(ExecutionResultException.class)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ResponseBody
-    public ErrorMessage handleWithoutResultException(HttpServletRequest req, ExecutionResultException exc){
-        return new ErrorMessage(exc.getMessage(), exc.getErrorCode());
-    }
-
-  @ExceptionHandler({NoSuchElementException.class})
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  @ResponseBody
-  public ErrorMessage handleElementErrorException(HttpServletRequest req, Exception exc){
-    return new ErrorMessage(exc.getMessage(), "element_doesnt_exist");
-  }
 }
