@@ -9,14 +9,14 @@ import java.util.Date;
 public class Vote implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  //@GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
   @Column(name="candidateid")
-  private Long candidateId;
+  private Integer candidateId;
 
   @Column(name="partyid")
-  private Long partyId;
+  private Integer partyId;
 
   @Column
   private String city;
@@ -31,7 +31,8 @@ public class Vote implements Serializable {
   public Vote() {
   }
 
-  public Vote(Long id, Long candidateId, Long partyId, String city, String location, String dateTime) {
+  //se cambiaron los valores Long por Integer
+  public Vote(Integer id, Integer candidateId, Integer partyId, String city, String location, String dateTime) {
     this.id = id;
     this.candidateId = candidateId;
     this.partyId = partyId;
@@ -40,27 +41,27 @@ public class Vote implements Serializable {
     this.dateTime = dateTime;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public Long getCandidateId() {
+  public Integer getCandidateId() {
     return candidateId;
   }
 
-  public void setCandidateId(Long candidateId) {
+  public void setCandidateId(Integer candidateId) {
     this.candidateId = candidateId;
   }
 
-  public Long getPartyId() {
+  public Integer getPartyId() {
     return partyId;
   }
 
-  public void setPartyId(Long partyId) {
+  public void setPartyId(Integer partyId) {
     this.partyId = partyId;
   }
 
