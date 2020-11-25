@@ -2,6 +2,7 @@ package co.edu.eam.sd.votaciones.voting.producers;
 
 
 
+import co.edu.eam.sd.votaciones.voting.encrypt.Encrypt;
 import co.edu.eam.sd.votaciones.voting.model.entities.Vote;
 import org.json.JSONObject;
 import org.springframework.amqp.core.DirectExchange;
@@ -17,6 +18,9 @@ public class ProcessorQueueProducer {
 
     @Autowired
     private DirectExchange directExchange;
+
+    @Autowired
+    private Encrypt encrypt;
 
 
     //produsco el mesnsaje a la primera cola
@@ -35,8 +39,15 @@ public class ProcessorQueueProducer {
                "party"+":1"+
            "}"+
         "}";
+        String key= "msgencriptadoeam";
+        String encriptado = encrypt.encritar(json,key);
+
+        System.out.println("este es el msg encriptado"+encriptado);
+
+        JSONObject jsonMessage = new JSONObject();
+        jsonMessage.put("data",encriptado);
         //notifications_result_queue
-        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registraduria",json);
+        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registraduria",jsonMessage.toString());
     }
 
     //produsco el mesnsaje a la segunda cola
@@ -55,8 +66,16 @@ public class ProcessorQueueProducer {
                 "party"+":1"+
                 "}"+
                 "}";
+
+        String key= "esteeselmsgencri";
+        String encriptado = encrypt.encritar(json,key);
+
+        System.out.println("este es el msg encriptado"+encriptado);
+
+        JSONObject jsonMessage = new JSONObject();
+        jsonMessage.put("data",encriptado);
         //notifications_result_queue
-        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registration_queue",json);
+        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registration_queue",jsonMessage.toString());
     }
 
 
@@ -76,8 +95,17 @@ public class ProcessorQueueProducer {
                 "party"+":1"+
                 "}"+
                 "}";
+
+        String key= "esteeselmsgencri";
+        String encriptado = encrypt.encritar(json,key);
+
+        System.out.println("este es el msg encriptado"+encriptado);
+
+        JSONObject jsonMessage = new JSONObject();
+        jsonMessage.put("data",encriptado);
+
         //notifications_result_queue
-        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_query_queue",json);
+        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_query_queue",jsonMessage.toString());
     }
 
 }

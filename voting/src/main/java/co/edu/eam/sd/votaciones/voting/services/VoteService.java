@@ -1,6 +1,7 @@
 package co.edu.eam.sd.votaciones.voting.services;
 
 
+import co.edu.eam.sd.votaciones.voting.encrypt.Encrypt;
 import co.edu.eam.sd.votaciones.voting.model.entities.Vote;
 import co.edu.eam.sd.votaciones.voting.producers.ProcessorQueueProducer;
 import co.edu.eam.sd.votaciones.voting.repository.VoteRepository;
