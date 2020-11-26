@@ -2,6 +2,7 @@ package co.edu.eam.sd.votaciones.voting.controller;
 
 
 import co.edu.eam.sd.votaciones.voting.model.entities.Vote;
+import co.edu.eam.sd.votaciones.voting.model.responses.VoteBiometria;
 import co.edu.eam.sd.votaciones.voting.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class VoteController {
     private VoteService voteService;
 
     @PostMapping
-    public void crear(@RequestBody Vote p){
+    public void crear(@RequestBody VoteBiometria p){
         System.out.println("entro al controlador guardar");
         voteService.create(p);
     }

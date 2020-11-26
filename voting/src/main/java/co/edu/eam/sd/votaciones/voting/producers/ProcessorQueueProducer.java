@@ -24,7 +24,7 @@ public class ProcessorQueueProducer {
 
 
     //produsco el mesnsaje a la primera cola
-    public void votingRegistraduriaQueue( Vote dato ) throws Exception {
+    public void votingRegistraduriaQueue(Integer candidatoid,Integer partyid ) throws Exception {
 
        // JSONObject jsonMessage = new JSONObject();
         //jsonMessage.put("id_solicitud",dato);
@@ -35,8 +35,8 @@ public class ProcessorQueueProducer {
                "city_id"+":8980"+
            "},"+
            "vote"+":{"+
-               "candidate"+":"+'"'+1+'"'+","+
-               "party"+":1"+
+               "candidate"+":"+'"'+candidatoid+'"'+","+
+               "party"+":"+partyid+
            "}"+
         "}";
         String key= "msgencriptadoeam";
