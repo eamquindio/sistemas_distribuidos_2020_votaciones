@@ -7,6 +7,8 @@ import co.edu.eam.sd.votaciones.voting.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api/votes")
 public class VoteController {
@@ -17,7 +19,11 @@ public class VoteController {
     @PostMapping
     public void crear(@RequestBody VoteBiometria p){
         System.out.println("entro al controlador guardar");
-        voteService.create(p);
+        try {
+            voteService.create(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/{id}")

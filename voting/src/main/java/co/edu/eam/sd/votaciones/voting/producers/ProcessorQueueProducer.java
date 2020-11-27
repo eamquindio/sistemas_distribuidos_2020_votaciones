@@ -24,15 +24,15 @@ public class ProcessorQueueProducer {
 
 
     //produsco el mesnsaje a la primera cola
-    public void votingRegistraduriaQueue(Integer candidatoid,Integer partyid ) throws Exception {
+    public void votingRegistraduriaQueue(String cedula,Integer candidatoid,Integer partyid,Long locationid,Long cytiid ) throws Exception {
 
        // JSONObject jsonMessage = new JSONObject();
         //jsonMessage.put("id_solicitud",dato);
-        String json= "{"+"voter"+":{ "+"id"+":"+'"'+ '"'+
+        String json= "{"+"voter"+":{ "+"id"+":"+'"'+cedula+'"'+
            "},"+
            "voting_location"+":{"+
-               "Id"+":123,"+
-               "city_id"+":8980"+
+               "Id"+":"+locationid+","+
+               "city_id"+":"+cytiid+
            "},"+
            "vote"+":{"+
                "candidate"+":"+'"'+candidatoid+'"'+","+
@@ -51,23 +51,23 @@ public class ProcessorQueueProducer {
     }
 
     //produsco el mesnsaje a la segunda cola
-    public void votingRegistrationQueue( Vote dato ) throws Exception {
+    public void votingRegistrationQueue(String cedula,Integer candidatoid,Integer partyid,Long locationid,Long cytiid) throws Exception {
 
         // JSONObject jsonMessage = new JSONObject();
         //jsonMessage.put("id_solicitud",dato);
-        String json= "{"+"voter"+":{ "+"id"+":"+'"'+ '"'+
+        String json= "{"+"voter"+":{ "+"id"+":"+'"'+cedula+'"'+
                 "},"+
                 "voting_location"+":{"+
-                "Id"+":123,"+
-                "city_id"+":8980"+
+                "Id"+":"+locationid+","+
+                "city_id"+":"+cytiid+
                 "},"+
                 "vote"+":{"+
-                "candidate"+":"+'"'+1+'"'+","+
-                "party"+":1"+
+                "candidate"+":"+'"'+candidatoid+'"'+","+
+                "party"+":"+partyid+
                 "}"+
                 "}";
 
-        String key= "esteeselmsgencri";
+        String key= "msgencriptadoeam";
         String encriptado = encrypt.encritar(json,key);
 
         System.out.println("este es el msg encriptado"+encriptado);
@@ -80,23 +80,23 @@ public class ProcessorQueueProducer {
 
 
     //produsco el mesnsaje a la tercera cola
-    public void votingQueryQueue( Vote dato ) throws Exception {
+    public void votingQueryQueue( String cedula,Integer candidatoid,Integer partyid,Long locationid,Long cytiid ) throws Exception {
 
         // JSONObject jsonMessage = new JSONObject();
         //jsonMessage.put("id_solicitud",dato);
-        String json= "{"+"voter"+":{ "+"id"+":"+'"'+ '"'+
+        String json= "{"+"voter"+":{ "+"id"+":"+'"'+cedula+'"'+
                 "},"+
                 "voting_location"+":{"+
-                "Id"+":123,"+
-                "city_id"+":8980"+
+                "Id"+":"+locationid+","+
+                "city_id"+":"+cytiid+
                 "},"+
                 "vote"+":{"+
-                "candidate"+":"+'"'+1+'"'+","+
-                "party"+":1"+
+                "candidate"+":"+'"'+candidatoid+'"'+","+
+                "party"+":"+partyid+
                 "}"+
                 "}";
 
-        String key= "esteeselmsgencri";
+        String key= "msgencriptadoeam";
         String encriptado = encrypt.encritar(json,key);
 
         System.out.println("este es el msg encriptado"+encriptado);
