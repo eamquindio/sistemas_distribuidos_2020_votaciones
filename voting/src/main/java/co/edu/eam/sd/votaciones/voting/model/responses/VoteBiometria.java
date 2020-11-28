@@ -1,5 +1,7 @@
 package co.edu.eam.sd.votaciones.voting.model.responses;
 
+import java.util.Date;
+
 public class VoteBiometria {
 
 
@@ -20,11 +22,11 @@ public class VoteBiometria {
     private String location;
 
     //Date
-    private String dateTime;
+    private Date dateTime;
 
     public VoteBiometria() {}
 
-    public VoteBiometria(Integer id, String biometria, Integer candidateId, Integer partyId, String city, String location, String dateTime) {
+    public VoteBiometria(Integer id, String biometria, Integer candidateId, Integer partyId, String city, String location, Date dateTime) {
         this.id = id;
         this.biometria = biometria;
         this.candidateId = candidateId;
@@ -82,11 +84,11 @@ public class VoteBiometria {
         this.location = location;
     }
 
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 }

@@ -75,7 +75,7 @@ public class ProcessorQueueProducer {
         JSONObject jsonMessage = new JSONObject();
         jsonMessage.put("data",encriptado);
         //notifications_result_queue
-        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registration_queue",jsonMessage.toString());
+        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_registration",jsonMessage.toString());
     }
 
 
@@ -105,7 +105,7 @@ public class ProcessorQueueProducer {
         jsonMessage.put("data",encriptado);
 
         //notifications_result_queue
-        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_query_queue",jsonMessage.toString());
+        rabbitTemplate.convertAndSend(directExchange.getName(),"voting_query",jsonMessage.toString());
     }
 
 }

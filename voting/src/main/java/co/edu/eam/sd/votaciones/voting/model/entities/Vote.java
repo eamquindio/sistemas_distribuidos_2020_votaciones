@@ -5,34 +5,34 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="votacion")
+@Table(name="vote")
 public class Vote implements Serializable {
 
   @Id
   //@GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
-  @Column(name="candidateid")
+  @Column(name="candidate_id")
   private Integer candidateId;
 
-  @Column(name="partyid")
+  @Column(name="party_id")
   private Integer partyId;
 
-  @Column
+
   private String city;
 
   @Column
   private String location;
 
   //Date
-  @Column(name="datetime")
-  private String dateTime;
+  @Column(name="date_time")
+  private Date dateTime;
 
   public Vote() {
   }
 
   //se cambiaron los valores Long por Integer
-  public Vote(Integer id, Integer candidateId, Integer partyId, String city, String location, String dateTime) {
+  public Vote(Integer id, Integer candidateId, Integer partyId, String city, String location, Date dateTime) {
     this.id = id;
     this.candidateId = candidateId;
     this.partyId = partyId;
@@ -81,11 +81,11 @@ public class Vote implements Serializable {
     this.location = location;
   }
 
-  public String getDateTime() {
+  public Date getDateTime() {
     return dateTime;
   }
 
-  public void setDateTime(String dateTime) {
+  public void setDateTime(Date dateTime) {
     this.dateTime = dateTime;
   }
 }

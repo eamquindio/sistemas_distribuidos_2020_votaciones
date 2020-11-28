@@ -4,14 +4,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="candidato")
+@Table(name="candidate")
+//se realizso un cambio de candidato a candidate
 public class Candidate implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(name="nombre")
+  //se realizo un cambio de nombre a name
+  @Column(name="name")
   private String name;
 
   //@ManyToOne

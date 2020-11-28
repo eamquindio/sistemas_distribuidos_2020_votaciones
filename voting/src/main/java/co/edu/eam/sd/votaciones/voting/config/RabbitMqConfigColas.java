@@ -51,14 +51,14 @@ public class RabbitMqConfigColas {
     @Bean
     public Binding bindDirectExchangeVotingRegistrationQueue(Queue votingRegistrationQueue, DirectExchange directExchange){
 
-        return BindingBuilder.bind(votingRegistrationQueue).to(directExchange).with("voting_registration_queue") ;
+        return BindingBuilder.bind(votingRegistrationQueue).to(directExchange).with("voting_registration") ;
     }
 
     //binding tercera cola
     @Bean
     public Binding bindDirectExchangeVotingQueryQueue(Queue votingQueryQueue, DirectExchange directExchange){
 
-        return BindingBuilder.bind(votingQueryQueue).to(directExchange).with("voting_query_queue") ;
+        return BindingBuilder.bind(votingQueryQueue).to(directExchange).with("voting_query") ;
     }
 
 }

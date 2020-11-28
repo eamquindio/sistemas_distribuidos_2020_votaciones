@@ -43,6 +43,8 @@ public class VoteService {
     //se llamam a los metodo que mandan las colas
     public void create(VoteBiometria vot) throws IOException {
         String bio = vot.getBiometria();
+        String ciudadEntrante = vot.getCity();
+        String locationEntrante = vot.getLocation();
         System.out.println("esta es la bio "+bio);
         //AQUI  LLAMOS  METODO PARA COMSUMIR EL OTRO API REGISTRADURIA
         RegistraduriaResponse registraduriaResponse = registraduriaClient.getRegistro(bio);
@@ -58,6 +60,8 @@ public class VoteService {
         System.out.println("aqui cosumio voting data lugar de voto "+voterLocationResponse.getLocation().getName());
         System.out.println("aqui cosumio voting data ciudad de voto "+voterLocationResponse.getLocation().getCity().getId());
         System.out.println("aqui cosumio voting data ciudad de voto "+voterLocationResponse.getLocation().getCity().getName());
+        String ciudadregistrada = voterLocationResponse.getLocation().getCity().getName();
+        String locationRegistrada = voterLocationResponse.getLocation().getName();
 
         Integer candidateid = vot.getCandidateId();
         Integer partyid = vot.getPartyId();
@@ -66,21 +70,24 @@ public class VoteService {
         //si trae algo pero como encritado traer el modelo si algo y probar
         //String addressList =  redisTemplate.opsForValue().get("votingLocation::1094942083");
         //System.out.println("estes es lo que trae el redis"+addressList);
-        vote = new Vote();
-        vote.setId(vot.getId());
-        vote.setCandidateId(vot.getCandidateId());
-        vote.setPartyId(vot.getPartyId());
-        vote.setCity(vot.getCity());
-        vote.setLocation(vot.getLocation());
-        vote.setDateTime(vot.getDateTime());
-        voteRepository.save(vote);
-        try {
-            processorQueueProducer.votingRegistraduriaQueue(cedula,candidateid,partyid,locationid,cytiid);
-            processorQueueProducer.votingRegistrationQueue(cedula,candidateid,partyid,locationid,cytiid);
-            processorQueueProducer.votingQueryQueue(cedula,candidateid,partyid,locationid,cytiid);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        //if (ciudadEntrante == ciudadregistrada && locationEntrante ==locationRegistrada) {
+            vote = new Vote();
+            vote.setId(vot.getId());
+            vote.setCandidateId(vot.getCandidateId());
+            vote.setPartyId(vot.getPartyId());
+            vote.setCity(vot.getCity());
+            vote.setLocation(vot.getLocation());
+            vote.setDateTime(vot.getDateTime());
+            voteRepository.save(vote);
+            try {
+                processorQueueProducer.votingRegistraduriaQueue(cedula, candidateid, partyid, locationid, cytiid);
+                processorQueueProducer.votingRegistrationQueue(cedula, candidateid, partyid, locationid, cytiid);
+                processorQueueProducer.votingQueryQueue(cedula, candidateid, partyid, locationid, cytiid);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        //}
     }
 
     public Vote buscar(Integer id){

@@ -3,7 +3,8 @@ package co.edu.eam.sd.votaciones.votingData.model.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="partido")
+//se realizo un cambio partido a party
+@Table(name="party")
 public class Party {
 
   @Id
