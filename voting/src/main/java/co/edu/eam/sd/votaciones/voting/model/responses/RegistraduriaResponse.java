@@ -1,8 +1,9 @@
 package co.edu.eam.sd.votaciones.voting.model.responses;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 
-public class RegistraduriaResponse {
+public class RegistraduriaResponse implements Serializable {
 
     private String nombre;
 

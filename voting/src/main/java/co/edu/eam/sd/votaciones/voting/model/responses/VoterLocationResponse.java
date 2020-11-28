@@ -1,6 +1,8 @@
 package co.edu.eam.sd.votaciones.voting.model.responses;
 
-public class VoterLocationResponse {
+import java.io.Serializable;
+
+public class VoterLocationResponse implements Serializable {
     //@Id
     private String cedula;
 

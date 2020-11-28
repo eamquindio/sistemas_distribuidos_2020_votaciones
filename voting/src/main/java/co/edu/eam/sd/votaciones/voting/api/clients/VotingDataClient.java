@@ -5,6 +5,8 @@ import co.edu.eam.sd.votaciones.voting.api.definitions.VotingDataAPI;
 import co.edu.eam.sd.votaciones.voting.model.responses.RegistraduriaResponse;
 import co.edu.eam.sd.votaciones.voting.model.responses.VoterLocationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -18,6 +20,12 @@ public class VotingDataClient {
     @Autowired
     private Retrofit votingdataApiConfig;
 
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
+
+
+    //@Cacheable(value = "voterLocationResponse", key = "#id")
     public VoterLocationResponse getlocavota(String id) throws IOException {
         VotingDataAPI api = votingdataApiConfig.create(VotingDataAPI.class);
 

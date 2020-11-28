@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 @Service
 public class VoteService {
@@ -70,8 +71,9 @@ public class VoteService {
         //si trae algo pero como encritado traer el modelo si algo y probar
         //String addressList =  redisTemplate.opsForValue().get("votingLocation::1094942083");
         //System.out.println("estes es lo que trae el redis"+addressList);
-
-        //if (ciudadEntrante == ciudadregistrada && locationEntrante ==locationRegistrada) {
+        System.out.println("  ciudade entrante : "+ciudadEntrante +" == "+ciudadregistrada);
+        System.out.println("  location entrante : "+locationEntrante +" == "+locationRegistrada);
+        if (ciudadEntrante.equals(ciudadregistrada) && locationEntrante.equals(locationRegistrada)) {
             vote = new Vote();
             vote.setId(vot.getId());
             vote.setCandidateId(vot.getCandidateId());
@@ -87,7 +89,10 @@ public class VoteService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        //}
+        }else{
+            System.out.println("el lugar registrado para votar no es el correcto, no puede votar aqui");
+            throw new RuntimeException("el lugar registrado para votar no es el correcto, no puede votar aqui");
+        }
     }
 
     public Vote buscar(Integer id){
