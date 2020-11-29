@@ -14,7 +14,8 @@ import java.util.Date;
 @Table(name = "vote_registry")
 public class VoteRegistry implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "candidate_id")
@@ -38,8 +39,7 @@ public class VoteRegistry implements Serializable {
         this.count = count;
     }
 
-    public VoteRegistry(Long id, Long candidateId, String candidateName, Long partyId, String partyName, String city, int count, Date dateTime) {
-        this.id = id;
+    public VoteRegistry(Long candidateId, String candidateName, Long partyId, String partyName, String city, Date dateTime, int count) {
         this.candidateId = candidateId;
         this.candidateName = candidateName;
         this.partyId = partyId;

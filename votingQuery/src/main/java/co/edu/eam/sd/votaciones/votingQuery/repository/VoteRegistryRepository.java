@@ -21,4 +21,7 @@ public interface VoteRegistryRepository extends JpaRepository<VoteRegistry, Long
     // TOTAL DE VOTOS DE TODOS LOS CANDIDATOS AGRUPADOS POR CANDIDATO
     @Query("SELECT new co.edu.eam.sd.votaciones.votingQuery.model.CountResult (v.candidateName, SUM(v.count) as count, v.candidateId) FROM VoteRegistry v GROUP BY v.candidateId, v.candidateName")
     public List<CountResult> countVoteRegistry();
+
+    @Query("SELECT vr FROM VoteRegistry vr where vr.candidateId = :candidateId")
+    public VoteRegistry findBycandidateId(Long candidateId);
 }
