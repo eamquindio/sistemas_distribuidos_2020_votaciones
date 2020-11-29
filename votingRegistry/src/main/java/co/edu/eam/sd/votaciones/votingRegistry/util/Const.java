@@ -1,2 +1,6 @@
-package co.edu.eam.sd.votaciones.votingRegistry.Util;public class Const {
+package co.edu.eam.sd.votaciones.votingRegistry.util;
+
+public class Const {
+
+    public static String SECRETKEY = "";
 }

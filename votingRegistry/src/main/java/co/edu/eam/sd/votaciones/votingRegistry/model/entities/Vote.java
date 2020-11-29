@@ -1,29 +1,42 @@
 package co.edu.eam.sd.votaciones.votingRegistry.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name = "vote")
 public class Vote implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false, unique = true)
   private Long id;
 
+  @Column(name = "candidate_id")
   private Long candidateId;
+
+  @Column(name = "party_id")
   private Long partyId;
+
   private String city;
+
   private String location;
+
+  @Column(name = "date_time")
   private Date dateTime;
 
 
   public Vote() {
   }
 
+  public Vote(Long candidateId, Long partyId, String city, String location, Date dateTime) {
+    this.candidateId = candidateId;
+    this.partyId = partyId;
+    this.city = city;
+    this.location = location;
+    this.dateTime = dateTime;
+  }
 
   public Long getId() {
     return id;
