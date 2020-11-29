@@ -42,25 +42,4 @@ public class VotingRegistryQueueListener {
 
         voteRegistryService.createVoteRegistry(v);
     }
-
-
-    /*
-    private Long candidateId;
-  private Long partyId;
-  private String city;
-  private String location;
-  private Date dateTime;
-    {
-        "voter":{
-        "id":""
-    },
-        "voting_location":{
-        "Id":123,
-                "city_id":8980
-    },
-        "vote":{
-        "candidate":"1",
-                "party":1
-    }
-    }*/
 }
