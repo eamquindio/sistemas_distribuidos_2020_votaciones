@@ -24,14 +24,19 @@ public class Votante implements Serializable {
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String biometria;
 
+  private String email;
+  private String celular;
+
   public Votante() {
   }
 
-  public Votante(String nombre, String cedula, String fechaNacimiento, String biometria) {
+  public Votante(String nombre, String cedula, String fechaNacimiento, String biometria, String email, String celular) {
     this.nombre = nombre;
     this.cedula = cedula;
     this.fechaNacimiento = fechaNacimiento;
     this.biometria = biometria;
+    this.email = email;
+    this.celular = celular;
   }
 
   public String getNombre() {
@@ -64,5 +69,21 @@ public class Votante implements Serializable {
 
   public void setBiometria(String biometria) {
     this.biometria = biometria;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getCelular() {
+    return celular;
+  }
+
+  public void setCelular(String celular) {
+    this.celular = celular;
   }
 }

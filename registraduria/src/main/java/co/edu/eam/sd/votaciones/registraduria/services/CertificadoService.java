@@ -2,13 +2,18 @@ package co.edu.eam.sd.votaciones.registraduria.services;
 
 import co.edu.eam.sd.votaciones.registraduria.exceptions.NotFoundException;
 import co.edu.eam.sd.votaciones.registraduria.model.entities.CertificadoVotacion;
+import co.edu.eam.sd.votaciones.registraduria.producers.VoterNotificationsProducer;
 import co.edu.eam.sd.votaciones.registraduria.repository.CertificadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CertificadoService {
+
+    @Autowired
+    private VoterNotificationsProducer voterNotificationsProducer;
 
     @Autowired
     private CertificadoRepository certificadoRepository;
@@ -19,7 +24,10 @@ public class CertificadoService {
         if (!certificado)
             throw new NotFoundException("No existe un certificado con ID: " + id, "certificate_doesnt_exist");
         return certificadoRepository.findById(id).get();
+    }
 
+    public void createCertificado(CertificadoVotacion certificadoVotacion) throws Exception {
+        certificadoRepository.save(certificadoVotacion);
     }
 
 }
