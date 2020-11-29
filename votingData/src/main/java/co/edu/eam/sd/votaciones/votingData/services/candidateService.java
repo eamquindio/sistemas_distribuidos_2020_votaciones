@@ -1,6 +1,7 @@
 package co.edu.eam.sd.votaciones.votingData.services;
 
 import co.edu.eam.sd.votaciones.votingData.exceptions.ExecutionResultException;
+import co.edu.eam.sd.votaciones.votingData.exceptions.NotFoundException;
 import co.edu.eam.sd.votaciones.votingData.model.entities.Candidate;
 import co.edu.eam.sd.votaciones.votingData.model.entities.CanditoPartido;
 import co.edu.eam.sd.votaciones.votingData.model.entities.Party;
@@ -9,6 +10,7 @@ import co.edu.eam.sd.votaciones.votingData.repository.PartyRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,16 @@ public class candidateService {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+
+    @Cacheable(value="candidate", key = "#cedula")
+    public Candidate findByCedula(Long cedula){
+        Candidate candidate = candidateRepository.findById(cedula).get();
+        if(candidate==null)
+            throw new NotFoundException("No existe un candidato con ese id: "+cedula, "candidate_doesnt_exist");
+
+        return candidate;
+    }
 
     public List<CanditoPartido> buscarCandidatos(){
         CanditoPartido canditoPartido;

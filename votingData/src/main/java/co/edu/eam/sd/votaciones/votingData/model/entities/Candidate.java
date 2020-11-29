@@ -4,14 +4,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="candidato")
 public class Candidate implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(name="nombre")
   private String name;
 
   //@ManyToOne

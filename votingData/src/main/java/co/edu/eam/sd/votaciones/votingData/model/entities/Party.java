@@ -1,10 +1,10 @@
 package co.edu.eam.sd.votaciones.votingData.model.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name="partido")
-public class Party {
+public class Party implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
